@@ -20,6 +20,7 @@ public class HW2_2 {
 		DB database = client.getDB("students");
 		DBCollection collection = database.getCollection("grades");
 		
+		/* Trying to delete the lowest grade in homework for each student. Previously, 800 rows. After operation, 600 rows. */
 		for (int i = 0; i < 200; i++) {
 			QueryBuilder builder = QueryBuilder.start("student_id").is(i).and("type").is("homework");
 			DBCursor cursor = collection.find(builder.get()).sort(new BasicDBObject("student_id",1).append("score",1));
